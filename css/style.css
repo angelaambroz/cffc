@@ -13,15 +13,54 @@ body {
   padding: 20px;
 }
 
+/* Montserrat for headers with Lato fallback */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Montserrat', 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-weight: 500;
+}
+
 header {
   border-bottom: 3px solid #2d5016;
   padding-bottom: 20px;
   margin-bottom: 40px;
 }
 
+.header-content {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 15px;
+}
+
+.logo-link {
+  flex-shrink: 0;
+}
+
+.logo {
+  height: 80px;
+  width: auto;
+  display: block;
+}
+
 header h1 {
   color: #2d5016;
-  margin-bottom: 10px;
+  margin-bottom: 0;
+}
+
+@media (max-width: 600px) {
+  .header-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .logo {
+    height: 60px;
+  }
+  
+  header h1 {
+    font-size: 1.5rem;
+  }
 }
 
 nav a {

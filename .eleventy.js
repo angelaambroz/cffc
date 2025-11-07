@@ -1,7 +1,8 @@
 module.exports = function(eleventyConfig) {
-  // Copy images and CSS to output
+  // Copy images, CSS, and fonts to output
   eleventyConfig.addPassthroughCopy("images");
   eleventyConfig.addPassthroughCopy("css");
+  eleventyConfig.addPassthroughCopy("fonts");
   
   // Create plant detail pages from data
   eleventyConfig.addCollection("plants", function(collectionApi) {
