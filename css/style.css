@@ -1,0 +1,128 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+header {
+  border-bottom: 3px solid #2d5016;
+  padding-bottom: 20px;
+  margin-bottom: 40px;
+}
+
+header h1 {
+  color: #2d5016;
+  margin-bottom: 10px;
+}
+
+nav a {
+  color: #2d5016;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.search-filter {
+  margin-bottom: 30px;
+}
+
+#search {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #ddd;
+  border-radius: 4px;
+}
+
+.plant-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.plant-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.2s;
+}
+
+.plant-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.plant-card a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.plant-card img,
+.placeholder-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  background: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+}
+
+.plant-card h3 {
+  padding: 15px;
+  color: #2d5016;
+}
+
+.scientific-name {
+  padding: 0 15px 15px;
+  color: #666;
+  font-size: 14px;
+}
+
+.plant-detail {
+  max-width: 800px;
+}
+
+.plant-detail img {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  border-radius: 8px;
+  margin: 20px 0;
+}
+
+.plant-detail section {
+  margin: 30px 0;
+}
+
+.plant-detail h3 {
+  color: #2d5016;
+  margin-bottom: 10px;
+}
+
+.back-link {
+  display: inline-block;
+  margin-top: 30px;
+  color: #2d5016;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+footer {
+  margin-top: 60px;
+  padding-top: 20px;
+  border-top: 1px solid #ddd;
+  text-align: center;
+  color: #666;
+}

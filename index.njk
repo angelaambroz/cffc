@@ -1,0 +1,50 @@
+---
+layout: layout.njk
+title: Plant Catalog - CFFC
+---
+
+<div class="catalog">
+  <h2>Browse Our Plants</h2>
+  
+  <div class="search-filter">
+    <input type="text" id="search" placeholder="Search plants...">
+    <!-- We'll add filters later -->
+  </div>
+  
+  <div class="plant-grid">
+    {% for plant in plants %}
+    <div class="plant-card" data-name="{{ plant.name | lower }}">
+      <a href="/plants/{{ plant.slug }}/">
+        {% if plant.imageFilename %}
+          <img src="/images/plants/{{ plant.imageFilename }}" alt="{{ plant.name }}">
+        {% else %}
+          <div class="placeholder-image">📷</div>
+        {% endif %}
+        <h3>{{ plant.name }}</h3>
+        {% if plant.scientificName %}
+          <p class="scientific-name">{{ plant.scientificName }}</p>
+        {% endif %}
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<script>
+  // Simple client-side search
+  const searchInput = document.getElementById('search');
+  const plantCards = document.querySelectorAll('.plant-card');
+  
+  searchInput.addEventListener('input', (e) => {
+    const searchTerm = e.target.value.toLowerCase();
+    
+    plantCards.forEach(card => {
+      const plantName = card.dataset.name;
+      if (plantName.includes(searchTerm)) {
+        card.style.display = 'block';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  });
+</script>

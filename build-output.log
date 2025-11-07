@@ -1,0 +1,20 @@
+[dotenv@17.2.3] injecting env (3) from .env -- tip: 📡 add observability to secrets: https://dotenvx.com/ops
+Error fetching from Airtable: TypeError: fetch is not a function
+    at module.exports (/home/angelaambroz/Documents/personal/cffc-plant-catalog/_data/plants.js:12:28)
+    at TemplateData.getDataValue (file:///home/angelaambroz/Documents/personal/cffc-plant-catalog/node_modules/@11ty/eleventy/src/Data/TemplateData.js:515:25)
+    at async TemplateData.getAllGlobalData (file:///home/angelaambroz/Documents/personal/cffc-plant-catalog/node_modules/@11ty/eleventy/src/Data/TemplateData.js:289:15)
+    at async #getGlobalData (file:///home/angelaambroz/Documents/personal/cffc-plant-catalog/node_modules/@11ty/eleventy/src/Data/TemplateData.js:365:20)
+Error fetching from Airtable: TypeError: fetch is not a function
+    at module.exports (/home/angelaambroz/Documents/personal/cffc-plant-catalog/_data/plants.js:12:28)
+    at Object.plants (/home/angelaambroz/Documents/personal/cffc-plant-catalog/.eleventy.js:8:48)
+    at TemplateMap.getUserConfigCollection (file:///home/angelaambroz/Documents/personal/cffc-plant-catalog/node_modules/@11ty/eleventy/src/TemplateMap.js:461:45)
+    at TemplateMap.setCollectionByTagName (file:///home/angelaambroz/Documents/personal/cffc-plant-catalog/node_modules/@11ty/eleventy/src/TemplateMap.js:137:47)
+    at TemplateMap.initDependencyMap (file:///home/angelaambroz/Documents/personal/cffc-plant-catalog/node_modules/@11ty/eleventy/src/TemplateMap.js:179:17)
+    at async TemplateMap.cache (file:///home/angelaambroz/Documents/personal/cffc-plant-catalog/node_modules/@11ty/eleventy/src/TemplateMap.js:274:3)
+    at async TemplateWriter._createTemplateMap (file:///home/angelaambroz/Documents/personal/cffc-plant-catalog/node_modules/@11ty/eleventy/src/TemplateWriter.js:352:3)
+    at async TemplateWriter.generateTemplates (file:///home/angelaambroz/Documents/personal/cffc-plant-catalog/node_modules/@11ty/eleventy/src/TemplateWriter.js:382:3)
+    at async TemplateWriter.write (file:///home/angelaambroz/Documents/personal/cffc-plant-catalog/node_modules/@11ty/eleventy/src/TemplateWriter.js:430:38)
+    at async Eleventy.executeBuild (file:///home/angelaambroz/Documents/personal/cffc-plant-catalog/node_modules/@11ty/eleventy/src/Eleventy.js:1438:19)
+[11ty] Writing ./_site/README/index.html from ./README.md (liquid)
+[11ty] Writing ./_site/index.html from ./index.njk
+[11ty] Copied 2 Wrote 2 files in 0.11 seconds (v3.1.2)

@@ -1,0 +1,57 @@
+---
+layout: layout.njk
+pagination:
+  data: plants
+  size: 1
+  alias: plant
+permalink: "/plants/{{ plant.slug }}/"
+---
+
+<article class="plant-detail">
+  <h2>{{ plant.name }}</h2>
+  
+  {% if plant.scientificName %}
+    <p class="scientific-name"><em>{{ plant.scientificName }}</em></p>
+  {% endif %}
+  
+  {% if plant.images and plant.images.length > 0 %}
+    <img src="{{ plant.images[0] }}" alt="{{ plant.name }}">
+  {% endif %}
+  
+  {% if plant.description %}
+    <section>
+      <h3>About</h3>
+      <p>{{ plant.description }}</p>
+    </section>
+  {% endif %}
+  
+  {% if plant.family %}
+    <section>
+      <h3>Family</h3>
+      <p>{{ plant.family }}</p>
+    </section>
+  {% endif %}
+  
+  {% if plant.edibleParts %}
+    <section>
+      <h3>Edible Parts</h3>
+      <p>{{ plant.edibleParts | join(", ") }}</p>
+    </section>
+  {% endif %}
+  
+  {% if plant.location %}
+    <section>
+      <h3>Location</h3>
+      <p>{{ plant.location }}</p>
+    </section>
+  {% endif %}
+  
+  {% if plant.healthStatus %}
+    <section>
+      <h3>Health Status</h3>
+      <p>{{ plant.healthStatus }}</p>
+    </section>
+  {% endif %}
+  
+  <a href="/" class="back-link">← Back to catalog</a>
+</article>
