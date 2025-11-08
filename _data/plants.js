@@ -7,6 +7,8 @@ module.exports = async function() {
   const apiKey = process.env.AIRTABLE_API_KEY;
   
   const url = `https://api.airtable.com/v0/${baseId}/${encodeURIComponent(tableName)}`;
+
+  console.log("Fetching from Airtable:", url);
   
   try {
     const response = await fetch(url, {

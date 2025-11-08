@@ -13,11 +13,12 @@ permalink: "/plants/{{ plant.slug }}/"
   {% if plant.scientificName %}
     <p class="scientific-name"><em>{{ plant.scientificName }}</em></p>
   {% endif %}
-  
-  {% if "images/plants/{{ plant.name }}.jpg" > 0 %}
-    <img src="images/plants/{{ plant.name }}.jpg" alt="{{ plant.name }}">
-  {% endif %}
-  
+
+  {% set imagePath = "/images/plants/" + plant.name + ".jpg" %}
+	<img src="{{ imagePath }}" 
+     alt="{{ plant.name }}"
+     title="{{ plant.name }}" />
+
   {% if plant.description %}
     <section>
       <h3>About</h3>
