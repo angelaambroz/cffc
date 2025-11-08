@@ -20,7 +20,7 @@ A static site catalog of plants in the community food forest, powered by Elevent
 
 1. Clone the repository:
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/angelaambroz/cffc-plant-catalog
 cd cffc-plant-catalog
 ```
 
@@ -43,7 +43,7 @@ Start the development server:
 npm start
 ```
 
-Visit `http://localhost:8080` to view the site.
+Visit `http://localhost:8080` (or `:8081` if `:8080` is occupied) to view the site.
 
 ### Build
 
@@ -56,7 +56,7 @@ The output will be in the `_site/` directory.
 
 ## 📦 Deployment
 
-This site is configured for deployment on Vercel:
+This site is configured for deployment on [Vercel](https://vercel.com/).
 
 1. Push your code to GitHub
 2. Connect your GitHub repository to Vercel
