@@ -15,8 +15,8 @@ title: Plant Catalog - CFFC
     {% for plant in plants %}
     <div class="plant-card" data-name="{{ plant.name | lower }}">
       <a href="/plants/{{ plant.slug }}/">
-        {% if plant.imageFilename %}
-          <img src="/images/plants/{{ plant.imageFilename }}" alt="{{ plant.name }}">
+      {% if "/images/plants/{{ plant.name }}.jpg" > 0 %}
+          <img src="/images/plants/{{ plant.name }}.jpg" alt="{{ plant.name }}">
         {% else %}
           <div class="placeholder-image">📷</div>
         {% endif %}

@@ -35,9 +35,7 @@ module.exports = async function() {
       waterNeeds: record.fields['Water Needs'],
       location: record.fields['Location in Forest'],
       healthStatus: record.fields['Last Health Status'],
-      summary: record.fields['Plant Summary (AI)']?.value,
-      // Airtable photo attachments
-      images: record.fields['Plant Photos']?.map(photo => photo.url) || []
+      summary: record.fields['Plant Summary (AI)']?.value
     }));
   } catch (error) {
     console.error('Error fetching from Airtable:', error);
