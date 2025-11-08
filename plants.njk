@@ -14,7 +14,7 @@ permalink: "/plants/{{ plant.slug }}/"
     <p class="scientific-name"><em>{{ plant.scientificName }}</em></p>
   {% endif %}
   
-  {% if plant.images and plant.images.length > 0 %}
+  {% if "images/plants/{{ plant.name }}.jpg" > 0 %}
     <img src="images/plants/{{ plant.name }}.jpg" alt="{{ plant.name }}">
   {% endif %}
   
