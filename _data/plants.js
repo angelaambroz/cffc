@@ -16,7 +16,7 @@ module.exports = async function() {
     });
     
     if (!response.ok) {
-      throw new Error(`Airtable API error: ${response.status}`);
+      throw new Error(`Airtable API error: ${response.status} ${response.statusText}`);
     }
     
     const data = await response.json();
