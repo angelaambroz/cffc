@@ -3,19 +3,19 @@ require('dotenv').config();
 
 module.exports = async function() {
   const baseId = process.env.AIRTABLE_BASE_ID;
-  const tableName = process.env.AIRTABLE_TABLE_NAME;
+  const tableName = process.env.PLANT_SPECIES_TABLE;
   const apiKey = process.env.AIRTABLE_API_KEY;
   
   const url = `https://api.airtable.com/v0/${baseId}/${encodeURIComponent(tableName)}`;
 
-  console.log("Fetching from Airtable:", url);
-  
   try {
     const response = await fetch(url, {
       headers: {
         'Authorization': `Bearer ${apiKey}`
       }
     });
+
+    console.log(url, apiKey, tableName);
     
     if (!response.ok) {
       throw new Error(`Airtable API error: ${response.status} ${response.statusText}`);
