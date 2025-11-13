@@ -1,0 +1,17 @@
+[project]
+name = "scripts"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Angela Ambroz", email = "briz@discord_work" }
+]
+requires-python = ">=3.11"
+dependencies = [
+    "ipython>=9.7.0",
+    "pymupdf>=1.26.6",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
