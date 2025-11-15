@@ -8,7 +8,7 @@ permalink: "/plants/{{ plant.slug }}/"
 ---
 
 <article class="plant-detail">
-  <h2>{{ plant.name }}</h2>
+  <h1>{{ plant.name }}</h1>
   
 
   {% set imagePath = "/images/plants/" + plant.name + ".jpg" %}
@@ -16,9 +16,9 @@ permalink: "/plants/{{ plant.slug }}/"
      alt="{{ plant.name }}"
      title="{{ plant.name }}" />
 
+<h2>About</h2>
   {% if plant.overview %}
     <section>
-      <h3>About</h3>
       <p>{{ plant.overview }}</p>
     </section>
   {% endif %}
@@ -27,20 +27,6 @@ permalink: "/plants/{{ plant.slug }}/"
     <section>
       <h3>Appearance</h3>
       <p>{{ plant.appearance }}</p>
-    </section>
-  {% endif %}
-
-  {% if plant.taste %}
-    <section>
-      <h3>Taste and Flavor</h3>
-      <p>{{ plant.taste }}</p>
-    </section>
-  {% endif %}
-
-  {% if plant.nutrition %}
-    <section>
-      <h3>Nutritional Value</h3>
-      <p>{{ plant.nutrition }}</p>
     </section>
   {% endif %}
 
@@ -64,21 +50,44 @@ permalink: "/plants/{{ plant.slug }}/"
       <p>{{ plant.availability }}</p>
     </section>
   {% endif %}
-  
-  {% if plant.culinaryUses %}
-    <section>
-      <h3>Culinary Uses</h3>
-      <p>{{ plant.culinaryUses }}</p>
-    </section>
-  {% endif %}
-  
+
   {% if plant.interestingFacts %}
     <section>
       <h3>Interesting Facts</h3>
       <p>{{ plant.interestingFacts }}</p>
     </section>
   {% endif %}
-  
+
+  {% if plant.funTrivia %}
+    <section>
+      <h3>Fun Trivia</h3>
+      <p>{{ plant.funTrivia }}</p>
+    </section>
+  {% endif %}
+
+  <br>
+
+      <h2>Culinary Uses</h2>
+  {% if plant.culinaryUses %}
+    <section>
+      <p>{{ plant.culinaryUses }}</p>
+    </section>
+  {% endif %}
+
+  {% if plant.taste %}
+    <section>
+      <h3>Taste and Flavor</h3>
+      <p>{{ plant.taste }}</p>
+    </section>
+  {% endif %}
+
+  {% if plant.nutrition %}
+    <section>
+      <h3>Nutritional Value</h3>
+      <p>{{ plant.nutrition }}</p>
+    </section>
+  {% endif %}
+
   {% if plant.shelfLife %}
     <section>
       <h3>Shelf Life</h3>
@@ -93,12 +102,6 @@ permalink: "/plants/{{ plant.slug }}/"
     </section>
   {% endif %}
   
-  {% if plant.funTrivia %}
-    <section>
-      <h3>Fun Trivia</h3>
-      <p>{{ plant.funTrivia }}</p>
-    </section>
-  {% endif %}
 
   <a href="/" class="back-link">← Back to catalog</a>
 </article>
