@@ -10,49 +10,95 @@ permalink: "/plants/{{ plant.slug }}/"
 <article class="plant-detail">
   <h2>{{ plant.name }}</h2>
   
-  {% if plant.scientificName %}
-    <p class="scientific-name"><em>{{ plant.scientificName }}</em></p>
-  {% endif %}
 
   {% set imagePath = "/images/plants/" + plant.name + ".jpg" %}
 	<img src="{{ imagePath }}" 
      alt="{{ plant.name }}"
      title="{{ plant.name }}" />
 
-  {% if plant.description %}
+  {% if plant.overview %}
     <section>
       <h3>About</h3>
-      <p>{{ plant.description }}</p>
+      <p>{{ plant.overview }}</p>
     </section>
   {% endif %}
-  
-  {% if plant.family %}
+
+  {% if plant.appearance %}
     <section>
-      <h3>Family</h3>
-      <p>{{ plant.family }}</p>
+      <h3>Appearance</h3>
+      <p>{{ plant.appearance }}</p>
     </section>
   {% endif %}
-  
-  {% if plant.edibleParts %}
+
+  {% if plant.taste %}
     <section>
-      <h3>Edible Parts</h3>
-      <p>{{ plant.edibleParts | join(", ") }}</p>
+      <h3>Taste and Flavor</h3>
+      <p>{{ plant.taste }}</p>
     </section>
   {% endif %}
-  
-  {% if plant.location %}
+
+  {% if plant.nutrition %}
     <section>
-      <h3>Location</h3>
-      <p>{{ plant.location }}</p>
+      <h3>Nutritional Value</h3>
+      <p>{{ plant.nutrition }}</p>
     </section>
   {% endif %}
-  
-  {% if plant.healthStatus %}
+
+  {% if plant.growingConditions %}
     <section>
-      <h3>Health Status</h3>
-      <p>{{ plant.healthStatus }}</p>
+      <h3>Growing Conditions</h3>
+      <p>{{ plant.growingConditions }}</p>
+    </section>
+  {% endif %}
+
+  {% if plant.cultivation %}
+    <section>
+      <h3>Cultivation</h3>
+      <p>{{ plant.cultivation }}</p>
+    </section>
+  {% endif %}
+
+  {% if plant.availability %}
+    <section>
+      <h3>Availability</h3>
+      <p>{{ plant.availability }}</p>
     </section>
   {% endif %}
   
+  {% if plant.culinaryUses %}
+    <section>
+      <h3>Culinary Uses</h3>
+      <p>{{ plant.culinaryUses }}</p>
+    </section>
+  {% endif %}
+  
+  {% if plant.interestingFacts %}
+    <section>
+      <h3>Interesting Facts</h3>
+      <p>{{ plant.interestingFacts }}</p>
+    </section>
+  {% endif %}
+  
+  {% if plant.shelfLife %}
+    <section>
+      <h3>Shelf Life</h3>
+      <p>{{ plant.shelfLife }}</p>
+    </section>
+  {% endif %}
+
+  {% if plant.allergies %}
+    <section>
+      <h3>Allergies</h3>
+      <p>{{ plant.allergies }}</p>
+    </section>
+  {% endif %}
+  
+  {% if plant.funTrivia %}
+    <section>
+      <h3>Fun Trivia</h3>
+      <p>{{ plant.funTrivia }}</p>
+    </section>
+  {% endif %}
+
   <a href="/" class="back-link">← Back to catalog</a>
 </article>

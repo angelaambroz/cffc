@@ -10,10 +10,4 @@ module.exports = function(eleventyConfig) {
     return plants.then(data => data);
   });
 
-  // Recipes
-  eleventyConfig.addCollection("recipes", function(collectionApi) {
-    const recipes = require('./_data/recipes.js')();
-    return recipes.then(data => data);
-  });
-
 };

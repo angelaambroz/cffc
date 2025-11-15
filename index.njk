@@ -17,9 +17,6 @@ title: Plant Catalog - CFFC
       <a href="/plants/{{ plant.slug }}/">
           <img src="/images/plants/{{ plant.name }}.jpg" alt="{{ plant.name }}">
         <h3>{{ plant.name }}</h3>
-        {% if plant.scientificName %}
-          <p class="scientific-name">{{ plant.scientificName }}</p>
-        {% endif %}
       </a>
     </div>
     {% endfor %}

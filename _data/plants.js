@@ -26,18 +26,21 @@ module.exports = async function() {
     // Transform Airtable records into cleaner format
     return data.records.map(record => ({
       id: record.id,
-      slug: slugify(record.fields['Species Name'] || 'unnamed-plant'),
-      name: record.fields['Species Name'],
-      scientificName: record.fields['Scientific Name'],
-      family: record.fields.Family,
-      description: record.fields.Description,
-      edibleParts: record.fields['Edible Parts'],
-      growthHabit: record.fields['Growth Habit'],
-      sunRequirements: record.fields['Sun Requirements'],
-      waterNeeds: record.fields['Water Needs'],
-      location: record.fields['Location in Forest'],
-      healthStatus: record.fields['Last Health Status'],
-      summary: record.fields['Plant Summary (AI)']?.value
+      slug: slugify(record.fields['Name'] || 'unnamed-plant'),
+      name: record.fields['Name'],
+      // scientificName: record.fields['Scientific Name'],
+      overview: record.fields.Overview,
+      appearance: record.fields.Appearance,
+      taste: record.fields['Taste and flavor'],
+      nutrition: record.fields['Nutritional value'],
+      growingConditions: record.fields['Growing conditions'],
+      cultivation: record.fields.Cultivation,
+      availability: record.fields.Availability,
+      culinaryUses: record.fields['Culinary Uses'],
+      interestingFacts: record.fields['Interesting facts'],
+      shelfLife: record.fields['Shelf life'],
+      allergies: record.fields.Allergies,
+      funTrivia: record.fields['Fun trivia'],
     }));
   } catch (error) {
     console.error('Error fetching from Airtable:', error);
