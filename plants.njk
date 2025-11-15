@@ -105,3 +105,108 @@ permalink: "/plants/{{ plant.slug }}/"
 
   <a href="/" class="back-link">← Back to catalog</a>
 </article>
+
+<script>
+// Make plants data available to JavaScript
+const plantsData = {{ plants | dump | safe }};
+
+// Create search functionality
+function createSearchInterface() {
+  // Create search container
+  const searchContainer = document.createElement('div');
+  searchContainer.className = 'plant-search-overlay';
+  searchContainer.innerHTML = `
+    <div class="search-modal">
+      <div class="search-header">
+        <input type="text" id="plant-search" placeholder="Search all plants..." autocomplete="off">
+        <button class="close-search">&times;</button>
+      </div>
+      <div class="search-results" id="search-results"></div>
+    </div>
+  `;
+  
+  document.body.appendChild(searchContainer);
+  
+  const searchInput = document.getElementById('plant-search');
+  const searchResults = document.getElementById('search-results');
+  const closeBtn = searchContainer.querySelector('.close-search');
+  
+  // Search functionality
+  searchInput.addEventListener('input', (e) => {
+    const query = e.target.value.toLowerCase().trim();
+    
+    if (query.length < 2) {
+      searchResults.innerHTML = '';
+      return;
+    }
+    
+    const matches = plantsData.filter(plant => 
+      plant.name.toLowerCase().includes(query) ||
+      (plant.overview && plant.overview.toLowerCase().includes(query)) ||
+      (plant.taste && plant.taste.toLowerCase().includes(query)) ||
+      (plant.culinaryUses && plant.culinaryUses.toLowerCase().includes(query))
+    );
+    
+    if (matches.length === 0) {
+      searchResults.innerHTML = '<div class="no-results">No plants found</div>';
+      return;
+    }
+    
+    searchResults.innerHTML = matches.map(plant => `
+      <div class="search-result-item">
+        <a href="/plants/${plant.slug}/">
+          <h4>${plant.name}</h4>
+          <p>${plant.overview ? plant.overview.substring(0, 100) + '...' : 'No description available'}</p>
+        </a>
+      </div>
+    `).join('');
+  });
+  
+  // Close search
+  closeBtn.addEventListener('click', () => {
+    searchContainer.style.display = 'none';
+    searchInput.value = '';
+    searchResults.innerHTML = '';
+  });
+  
+  // Close on escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && searchContainer.style.display !== 'none') {
+      searchContainer.style.display = 'none';
+      searchInput.value = '';
+      searchResults.innerHTML = '';
+    }
+  });
+  
+  // Close when clicking outside modal
+  searchContainer.addEventListener('click', (e) => {
+    if (e.target === searchContainer) {
+      searchContainer.style.display = 'none';
+      searchInput.value = '';
+      searchResults.innerHTML = '';
+    }
+  });
+}
+
+// Create search button
+function addSearchButton() {
+  const searchBtn = document.createElement('button');
+  searchBtn.className = 'floating-search-btn';
+  searchBtn.innerHTML = '🔍';
+  searchBtn.title = 'Search all plants';
+  
+  searchBtn.addEventListener('click', () => {
+    const overlay = document.querySelector('.plant-search-overlay');
+    overlay.style.display = 'flex';
+    document.getElementById('plant-search').focus();
+  });
+  
+  document.body.appendChild(searchBtn);
+}
+
+// Initialize when page loads
+document.addEventListener('DOMContentLoaded', () => {
+  createSearchInterface();
+  addSearchButton();
+});
+</script>
