@@ -10,19 +10,27 @@ title: Plant Catalog - CFFC
     <input type="text" id="search" placeholder="Search plants...">
     <!-- We'll add filters later -->
   </div>
-  
+
+  {% for layer in collections.layers %}
+
+	  <h3 class="category-header">{{ layer }}</h3>
+
   <div class="plant-grid">
     {% for plant in plants %}
+     {% if plant.layer == layer %}
     <div class="plant-card" data-name="{{ plant.name | lower }}">
       <a href="/plants/{{ plant.slug }}/">
           <img src="/images/plants/{{ plant.name }}.jpg" alt="{{ plant.name }}">
         <h3>{{ plant.name }}</h3>
-	<span class="plant-category">{{ plant.layer }}</span>
       </a>
     </div>
+     {% endif %}
     {% endfor %}
   </div>
 </div>
+
+  {% endfor %}
+
 
 <script>
   // Simple client-side search

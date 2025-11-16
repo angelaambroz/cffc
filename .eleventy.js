@@ -10,4 +10,9 @@ module.exports = function(eleventyConfig) {
     return plants.then(data => data);
   });
 
+  // Food forest layers - these are in a specific order
+  eleventyConfig.addCollection("layers", function() {
+return ["Canopy", "Understory", "Shrub", "Herbaceous", "Groundcover", "Root", "Vines & Canes"];
+  })
+
 };
