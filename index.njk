@@ -17,7 +17,7 @@ title: Plant Catalog - CFFC
       <a href="/plants/{{ plant.slug }}/">
           <img src="/images/plants/{{ plant.name }}.jpg" alt="{{ plant.name }}">
         <h3>{{ plant.name }}</h3>
-	<p>{{ plant.layer }}</p>
+	<span class="plant-category">{{ plant.layer }}</span>
       </a>
     </div>
     {% endfor %}
