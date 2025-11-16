@@ -150,30 +150,13 @@ nav a {
   display: inline-block;
   padding: 4px 12px;
   margin: 0 15px 15px;
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   border-radius: 20px;
   background: #766a60;
   color: white;
-}
-
-/* Optional: Different colors for different categories */
-.plant-category:contains("understory") {
-  background: #4a7c59;
-}
-
-.plant-category:contains("shrub") {
-  background: #8b4513;
-}
-
-.plant-category:contains("canopy") {
-  background: #2d5016;
-}
-
-.plant-category:contains("ground") {
-  background: #6b8e23;
 }
 
 .plant-detail {
