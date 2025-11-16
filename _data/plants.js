@@ -41,6 +41,7 @@ module.exports = async function() {
       shelfLife: record.fields['Shelf life'],
       allergies: record.fields.Allergies,
       funTrivia: record.fields['Fun trivia'],
+      layer: record.fields.Layer,
     }));
   } catch (error) {
     console.error('Error fetching from Airtable:', error);
