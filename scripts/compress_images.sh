@@ -2,7 +2,7 @@
 
 # Directory containing images
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-IMG_DIR="$SCRIPT_DIR/../images"
+IMG_DIR="$SCRIPT_DIR/../images/plants"
 OUTPUT_DIR="$IMG_DIR/compressed"
 
 # Create output directory if it doesn't exist
