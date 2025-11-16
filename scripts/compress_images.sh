@@ -8,6 +8,10 @@ OUTPUT_DIR="$IMG_DIR/compressed"
 # Create output directory if it doesn't exist
 mkdir -p "$OUTPUT_DIR"
 
+echo "Compressing images..."
+echo "Input directory: $IMG_DIR"
+echo "Output directory: $OUTPUT_DIR"
+
 # Iterate over common image formats
 for img in "$IMG_DIR"/*.{jpg,jpeg,png,JPG,JPEG,PNG}; do
     # Skip if no files match
