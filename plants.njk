@@ -51,19 +51,13 @@ permalink: "/plants/{{ plant.slug }}/"
         </section>
       {% endif %}
 
-      {% if plant.interestingFacts %}
+      {% if plant.moreInfo %}
         <section>
-          <h3>Interesting Facts</h3>
-          <p>{{ plant.interestingFacts }}</p>
+          <h3>More info</h3>
+          <p>{{ plant.moreInfo }}</p>
         </section>
       {% endif %}
 
-      {% if plant.funTrivia %}
-        <section>
-          <h3>Fun Trivia</h3>
-          <p>{{ plant.funTrivia }}</p>
-        </section>
-      {% endif %}
     </div>
 
     <!-- Right Column: Culinary Information -->
