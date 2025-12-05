@@ -10,6 +10,7 @@ permalink: "/plants/{{ plant.slug }}/"
 <article class="plant-detail">
   <span class="plant-category">{{ plant.layer }}</span>
   <h1>{{ plant.name }}</h1>
+  <p class="scientific-name"><em>{{ plant.scientificName }}</em></p>
   
   {% set imagePath = "/images/plants/" + plant.name + ".jpg" %}
   <img src="{{ imagePath }}" 

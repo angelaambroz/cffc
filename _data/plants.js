@@ -28,7 +28,7 @@ module.exports = async function() {
       id: record.id,
       slug: slugify(record.fields['Name'] || 'unnamed-plant'),
       name: record.fields['Name'],
-      // scientificName: record.fields['Scientific Name'],
+      scientificName: record.fields['Scientific Name'],
       overview: record.fields.Overview,
       appearance: record.fields.Appearance,
       taste: record.fields['Taste and flavor'],
