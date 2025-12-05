@@ -1,0 +1,14 @@
+name: Nightly Vercel Deploy
+
+on:
+  schedule:
+    - cron: '0 5 * * *'  # Runs at 5 AM UTC daily
+  workflow_dispatch:  # Allows manual trigger
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Vercel Deploy Hook
+        run: |
+          curl -X POST ${{ secrets.VERCEL_DEPLOY_HOOK }}
