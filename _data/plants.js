@@ -41,6 +41,7 @@ module.exports = async function() {
       shelfLife: record.fields['Shelf life'],
       allergies: record.fields.Allergies,
       funTrivia: record.fields['Fun trivia'],
+      tags: record.fields['Tags'],
     moreInfo: [record.fields['Interesting facts'], record.fields['Fun trivia']]
   .filter(Boolean)
   .join('\n\n'),
