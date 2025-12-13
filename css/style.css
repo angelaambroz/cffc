@@ -157,7 +157,15 @@ nav a {
   border-radius: 20px;
   background: #766a60;
   color: white;
+  text-decoration: none;
 }
+
+.plant-tag {
+ text-decoration: none;
+ color: gray;
+}
+
+
 
 .plant-detail {
   max-width: 800px;

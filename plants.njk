@@ -8,7 +8,13 @@ permalink: "/plants/{{ plant.slug }}/"
 ---
 
 <article class="plant-detail">
-  <span class="plant-category">{{ plant.layer }}</span>
+  <a href="/?layer={{ plant.layer | urlencode }}" class="plant-category">{{ plant.layer }}</a>
+  {% if plant.tags %}
+    {% for tag in plant.tags %}
+	    <a href="/?tag={{ tag | urlencode }}" class="plant-tag"><span class="plant-tag">{{ tag }}</span></a>
+	    {% if not loop.last %} • {% endif %}
+    {% endfor %}
+  {% endif %}
   <h1>{{ plant.name }}</h1>
   <p class="scientific-name"><em>{{ plant.scientificName }}</em></p>
   

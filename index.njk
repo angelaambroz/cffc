@@ -5,19 +5,23 @@ title: Plant Catalog - CFFC
 
 <div class="catalog">
   <h2>Browse Our Plants</h2>
-  
+
   <div class="search-filter">
     <input type="text" id="search" placeholder="Search plants...">
+    <div id="filter-info" style="display: none; margin-top: 10px;">
+      <span>Filtered by: <strong id="filter-group"></strong></span>
+      <button id="clear-filter" style="margin-left: 10px;">Show All</button>
+    </div>
   </div>
 
   {% for layer in collections.layers %}
 
-	  <h3 class="category-header">{{ layer }}</h3>
+	  <h3 class="category-header" data-layer="{{ layer }}">{{ layer }}</h3>
 
-  <div class="plant-grid">
+  <div class="plant-grid" data-layer="{{ layer }}">
     {% for plant in plants %}
      {% if plant.layer == layer %}
-    <div class="plant-card" data-name="{{ plant.name | lower }}">
+    <div class="plant-card" data-name="{{ plant.name | lower }}" data-tags="{{ plant.tags | join(',') if plant.tags else '' }}">
       <a href="/plants/{{ plant.slug }}/">
           <img src="/images/plants/{{ plant.name }}.jpg" alt="{{ plant.name }}">
         <h3>{{ plant.name }}</h3>
@@ -35,10 +39,98 @@ title: Plant Catalog - CFFC
   // Simple client-side search
   const searchInput = document.getElementById('search');
   const plantCards = document.querySelectorAll('.plant-card');
-  
+  const categoryHeaders = document.querySelectorAll('.category-header');
+  const plantGrids = document.querySelectorAll('.plant-grid');
+  const filterInfo = document.getElementById('filter-info');
+  const filterGroup = document.getElementById('filter-group');
+  const clearFilterBtn = document.getElementById('clear-filter');
+
+  // Check for layer filter in URL
+  const urlParams = new URLSearchParams(window.location.search);
+  const layerFilter = urlParams.get('layer');
+  const tagFilter = urlParams.get('tag');
+
+  if (layerFilter) {
+    filterByGroup('layer', layerFilter);
+  }
+
+  if (tagFilter) {
+    filterByGroup('tag', tagFilter);
+  }
+
+  function filterByGroup(filterType, filterValue) {
+    // Show filter info
+    filterInfo.style.display = 'block';
+    filterGroup.textContent = filterValue;
+
+    // Show all sections and cards first
+    categoryHeaders.forEach(header => header.style.display = 'block');
+    plantGrids.forEach(grid => grid.style.display = 'grid');
+    plantCards.forEach(card => card.style.display = 'block');
+
+    if (filterType === 'layer') {
+      // Hide sections that don't match the layer
+      categoryHeaders.forEach(header => {
+        if (header.dataset.layer !== filterValue) {
+          header.style.display = 'none';
+        }
+      });
+
+      plantGrids.forEach(grid => {
+        if (grid.dataset.layer !== filterValue) {
+          grid.style.display = 'none';
+        }
+      });
+
+      // Scroll to the filtered section
+      const targetHeader = document.querySelector(`.category-header[data-layer="${filterValue}"]`);
+      if (targetHeader) {
+        targetHeader.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    } else if (filterType === 'tag') {
+      // Hide cards that don't have the tag
+      plantCards.forEach(card => {
+        const cardTags = card.dataset.tags;
+        if (!cardTags || !cardTags.split(',').includes(filterValue)) {
+          card.style.display = 'none';
+        }
+      });
+
+      // Hide empty sections
+      plantGrids.forEach(grid => {
+        const visibleCards = grid.querySelectorAll('.plant-card[style*="display: block"]');
+        const parentHeader = grid.previousElementSibling;
+        if (visibleCards.length === 0) {
+          grid.style.display = 'none';
+          if (parentHeader && parentHeader.classList.contains('category-header')) {
+            parentHeader.style.display = 'none';
+          }
+        }
+      });
+    }
+  }
+
+  clearFilterBtn.addEventListener('click', () => {
+    // Clear URL parameter
+    window.history.pushState({}, '', window.location.pathname);
+
+    // Show all sections
+    categoryHeaders.forEach(header => header.style.display = 'block');
+    plantGrids.forEach(grid => grid.style.display = 'grid');
+
+    // Show all plant cards
+    plantCards.forEach(card => card.style.display = 'block');
+
+    // Hide filter info
+    filterInfo.style.display = 'none';
+
+    // Clear search
+    searchInput.value = '';
+  });
+
   searchInput.addEventListener('input', (e) => {
     const searchTerm = e.target.value.toLowerCase();
-    
+
     plantCards.forEach(card => {
       const plantName = card.dataset.name;
       if (plantName.includes(searchTerm)) {
